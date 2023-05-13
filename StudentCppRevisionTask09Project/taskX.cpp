@@ -31,11 +31,14 @@
 */
 
 bool taskX(long long number) {
-	bool result = false;
 	int count = 0;
 
+	if (number < 0) {
+		number = -number;
+	}
+
 	if (number == 0) {
-		result = true;
+		return true;
 	}
 
 	for (int i = 0; i < 10; i++) {
@@ -46,18 +49,15 @@ bool taskX(long long number) {
 				count++;
 			}
 
-			if (count > 1) {
-				break;
-			}
-			else {
-				result = true;
-			}
-
 			num /= 10;
+		}
+
+		if (count > 1) {
+			return false;
 		}
 
 		count = 0;
 	}
 
-	return result;
+	return true;
 }
